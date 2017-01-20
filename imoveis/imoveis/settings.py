@@ -19,7 +19,7 @@ MEDIA_ROOT = BASE_DIR + '/media'
 
 MEDIA_URL = '/media/'
 
-
+    
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 

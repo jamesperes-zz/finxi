@@ -1,0 +1,16 @@
+{% extends 'siteimoveis/base.html' %}
+
+{% block content %}
+{% for imovel in imoveis %}
+<br>
+<img src="{{ imovel.imagem.url }}" width="150" height="150" >
+<br>{{imovel.anuncio}}
+
+<br>Endereco: {{imovel.endereco }}
+<br>Bairro: {{imovel.bairro}}
+<br>Contato: {{imovel.vendedor }}
+
+{%endfor%}
+
+<br>
+{% endblock %}

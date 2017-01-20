@@ -1,18 +1,7 @@
 {% load staticfiles %}
-<<html>
+<html>
 <body>
 
-
-<br>
-<img src="{{ imovel.imagem.url }}" width="150" height="150" >
-{{imovel.anuncio}}
-
-<br>Endereco: {{imovel.endereco }}
-<br>Bairro: {{imovel.bairro}}
-<br>Contato: {{imovel.vendedor }}
-
-
-<br>
 {% block content %}{% endblock %}
 </body>
 </html>

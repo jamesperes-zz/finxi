@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf import settings
 from django.contrib import admin
 from siteimoveis.views import imovelhome, imovel_novo, vendedor_novo
 from django.conf.urls.static import static
