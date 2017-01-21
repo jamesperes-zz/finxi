@@ -16,13 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.conf import settings
 from django.contrib import admin
-from siteimoveis.views import imovelhome, imovel_novo, vendedor_novo
+from siteimoveis.views import imovelhome, imovel_novo, vendedor_novo, imovelpesquisa
 from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^$', imovelhome),
+    url(r'^pesquisa/', imovelpesquisa, name='imovelpesquisa'),
     url(r'^cadastraimovel/', imovel_novo, name='imovel_novo'),
     url(r'^cadastravendedor/', vendedor_novo, name='vendedor_novo'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

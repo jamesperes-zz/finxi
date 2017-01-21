@@ -1,6 +1,13 @@
 {% extends 'siteimoveis/base.html' %}
 
 {% block content %}
+
+<form action="{% url 'siteimoveis.views.imovelpesquisa' %}" method="POST" class="form-buscar">{% csrf_token %}
+<input type="descricao" name="pesquisa" placeholder="LOCAL" style="width: 75%;">
+<button type="submit" class="button-buscar" ><h5>Pesquisar</h5></button>
+</form>
+
+
 {% for imovel in imoveis %}
 <br>
 <img src="{{ imovel.imagem.url }}" width="150" height="150" >
