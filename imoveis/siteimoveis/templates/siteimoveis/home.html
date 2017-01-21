@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<form action="{% url 'siteimoveis.views.imovelpesquisa' %}" method="POST" class="form-buscar">{% csrf_token %}
-<input type="descricao" name="pesquisa" placeholder="LOCAL" style="width: 75%;">
+<form action="{% url 'imovelpesquisa' %}" method="POST" class="form-buscar">{% csrf_token %}
+<input type="descricao" name="pesquisa" placeholder="Procure pelo Bairro" style="width: 75%;">
 <button type="submit" class="button-buscar" ><h5>Pesquisar</h5></button>
 </form>
 

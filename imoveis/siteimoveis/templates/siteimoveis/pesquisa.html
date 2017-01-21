@@ -3,12 +3,12 @@
 {% block content %}
 {% for pesquisa in pesquisas %}
 <br>
-<img src="{{ imovel.imagem.url }}" width="150" height="150" >
-<br>{{imovel.anuncio}}
+<img src="{{ pesquisa.imagem.url }}" width="150" height="150" >
+<br>{{pesquisa.anuncio}}
 
-<br>Endereco: {{imovel.endereco }}
-<br>Bairro: {{imovel.bairro}}
-<br>Contato: {{imovel.vendedor }}
+<br>Endereco: {{pesquisa.endereco }}
+<br>Bairro: {{pesquisa.bairro}}
+<br>Contato: {{pesquisa.vendedor }}
 
 {%endfor%}
 

@@ -34,14 +34,3 @@ def imovelpesquisa(request):
 	search = request.POST.get('pesquisa')
 	pesquisas = Imovel.objects.filter(bairro=search.lower())
 	return render(request, 'siteimoveis/pesquisa.html', {'pesquisas':pesquisas})
-
-#def imovelpesquisa(request):
-#    if request.method == "POST":
-#        form = PesquisaForm(request.POST, request.FILES)
-#        form = Imovel.objects.filter(bairro=search.lower())
-#        if form.is_valid():
-#            form.save()
-#            return HttpResponseRedirect('/')
-#    else:
-#        form = PesquisaForm()
-#    return render(request, 'siteimoveis/pesquisa.html', {'form': form})
