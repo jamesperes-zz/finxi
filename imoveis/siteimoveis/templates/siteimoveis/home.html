@@ -1,15 +1,29 @@
 {% extends 'siteimoveis/base.html' %}
 
+
+{% block head%}
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+   <meta charset="utf-8">
+   <style>
+     html, body {
+       height: 100%;
+       margin: 0;
+       padding: 0;
+     }
+     #map {
+       height: 35%;
+       width: 65%;
+     }
+   </style>
+
+{%endblock%}
+
 {% block content %}
 
-<form action="{% url 'imovelpesquisa' %}" method="POST" class="form-buscar">{% csrf_token %}
-<input type="descricao" name="pesquisa" placeholder="Procure pelo Bairro" style="width: 75%;">
-<button type="submit" class="button-buscar" ><h5>Pesquisar</h5></button>
-</form>
+{% for imovel in imoveis3 %}
 
-
-{% for imovel in imoveis %}
-<br>
+<h3>{{imovel.anuncio}}</h3>
 <img src="{{ imovel.imagem.url }}" width="150" height="150" >
 <br>{{imovel.anuncio}}
 
@@ -20,4 +34,32 @@
 {%endfor%}
 
 <br>
+
+
+
+  <div id="map"></div>
+  <script>
+
+function initMap() {
+
+var map = new google.maps.Map(document.getElementById('map'), {
+  zoom: 10,
+  center: {lat: {{lat}}, lng: {{lng}}}
+});
+
+{%for imovel in imoveis%}
+var marker = new google.maps.Marker({
+  position: {lat: {{imovel.latitude}}, lng: {{imovel.longitude}}},
+  map: map,
+  title: '{{imovel.anuncio}}'
+});
+{%endfor%}
+}
+
+  </script>
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN_pS2HY1GrbvJyLaAb10y7tX92i6zJAI&callback=initMap"></script>
+
+
+
 {% endblock %}

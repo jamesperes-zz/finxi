@@ -5,7 +5,7 @@ class ImovelForm(forms.ModelForm):
 
     class Meta:
         model = Imovel
-        fields = ('endereco', 'valor', 'bairro', 'anuncio', 'imagem', 'vendedor')
+        fields = ('endereco', 'valor', 'bairro', 'cidade', 'anuncio', 'imagem', 'vendedor')
 
 
 class VendedorForm(forms.ModelForm):

@@ -1,31 +1,31 @@
-central = (
-    ("Bairro Imperial de São Cristóvão", "Bairro Imperial de São Cristóvão"),
-    ('Benfica', 'Benfica'),
-    ('Caju'. 'Caju'),
-    ('Catumbi','Catumbi')
-    ('Centro', 'Centro')
-    ('Cidade Nova','Cidade Nova')
-    ('Estácio', 'Estácio')
-    ('Flamengo','Flamengo')
-    ('Gamboa', 'Gamboa')
-    ('Glória','Glória')
-    ('Lapa','Lapa')
-    ('Mangueira', 'Mangueira')
-    ('Paquetá', 'Paquetá')
-    ('Rio Comprido', 'Rio Comprido')
-    ('Santa Teresa', 'Santa Teresa')
-    ('Santo Cristo', 'Santo Cristo')
-    ('Saúde', 'Saúde')
-    ('Vasco da Gama', 'Vasco da Gama')
-)
+central = [
+    Bairro Imperial de São Cristóvão
+    Benfica
+    Caju
+    Catumbi
+    Centro
+    Cidade Nova
+    Estácio
+    Flamengo
+    Gamboa
+    Glória
+    Lapa
+    Mangueira
+    Paquetá
+    Rio Comprido
+    Santa Teresa
+    Santo Cristo
+    Saúde
+    Vasco da Gama
+]
 
 
 sul = [
-    ('Botafogo', 'Botafogo')
-    ('Catete', 'Catete')
-    ('Copacabana', 'Copacabana')
-    ('Cosme Velho', 'Cosme Velho')
-    ('Gávea', 'Gávea')
+    Botafogo
+    Catete
+    Copacabana
+    Cosme Velho
+    Gávea
     Humaitá
     Ipanema
     Jardim Botânico
