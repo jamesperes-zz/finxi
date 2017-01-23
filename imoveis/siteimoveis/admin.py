@@ -10,7 +10,7 @@ from .models import Vendedor, Imovel
 
 
 class ImovelAdmin(admin.ModelAdmin):
-    readonly_fields = ('image_tag','endereco', 'valor', 'bairro', 'anuncio', 'vendedor')
+    readonly_fields = ('image_tag','endereco', 'valor', 'bairro', 'anuncio', 'vendedor','cidade', 'latitude', 'longitude')
     list_display = ('image_tag', 'endereco', 'valor', 'bairro', 'anuncio',  'vendedor')
     #def __str__(self):
     #    return self.anuncio
