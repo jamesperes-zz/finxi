@@ -36,8 +36,8 @@
     {{pesquisa.anuncio}}<br/>
   Endereco: {{pesquisa.endereco }}<br/>
   Bairro: {{pesquisa.bairro}}<br/>
-  Contato: {{pesquisa.vendedor }}<br/></p>
-  <p>
+  Contato: {{pesquisa.vendedor }}<br/>
+  Mais informações :<a href='/imovel/{{imovel.id}}'>Clique aqui</a><br/>
   </p>
 </div>
 {%endfor%}
@@ -53,7 +53,7 @@
 function initMap() {
 
 var map = new google.maps.Map(document.getElementById('map'), {
-  zoom: 14,
+  zoom: 12,
   center: {lat: {{lat}}, lng: {{lng}}}
 });
 
@@ -70,7 +70,7 @@ var marker = new google.maps.Marker({
   <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDtrKjdK9fa89PSzloZ7PhXYpJKpmuG2g&callback=initMap"></script>
 </center>
-
+<br><br>
 {% endblock %}
 
 
