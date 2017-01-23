@@ -1,0 +1,18 @@
+{% extends 'siteimoveis/base.html' %}
+
+
+{% block content %}
+
+<div class="jumbotron">
+  <h2>{{imovel.anuncio}}</h2>
+  <p><img src="{{ imovel.imagem.url }}" width="150" height="150" align="left" >
+
+    {{imovel.anuncio}}<br/>
+  Endereco: {{imovel.endereco }}<br/>
+  Bairro: {{imovel.bairro}}<br/>
+  Contato: {{imovel.vendedor }}<br/>
+  Telefone: {{imovel.vendedor.telefone }}<br/>
+  </p>
+</div>
+
+{% endblock %}

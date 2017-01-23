@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 
 import geocoder
-from random import shuffle
 
 from .forms import ImovelForm, VendedorForm
 from .models import Imovel, Vendedor
@@ -23,7 +22,6 @@ def imovelhome(request):
                                                      'lat':lat,
                                                      'lng':lng,
                                                      'imoveis3': imoveis})
-
 
 def imovel_novo(request):
     if request.method == "POST":
@@ -46,6 +44,7 @@ def vendedor_novo(request):
     return render(request, 'siteimoveis/vendedor_novo.html', {'form': form})
 
 def imovelpesquisa(request):
+    mapas = Imovel.objects.all()
     search = request.POST.get('pesquisa')
     pesquisas = Imovel.objects.filter(bairro=search.lower())
     ip = get_client_ip(request)
@@ -58,7 +57,8 @@ def imovelpesquisa(request):
     lng = str(local.lng)
     return render(request, 'siteimoveis/pesquisa.html', {'pesquisas':pesquisas,
                                                          'lat':lat,
-                                                         'lng':lng})
+                                                         'lng':lng,
+                                                         'mapas':mapas})
 
 def get_client_ip(request):
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -67,3 +67,11 @@ def get_client_ip(request):
     else:
         ip = request.META.get('REMOTE_ADDR')
     return ip
+
+def imovel_list(request):
+    imoveis = Imovel.objects.all().order_by('bairro')
+    return render(request, 'siteimoveis/list.html', {'imoveis': imoveis})
+
+def imovel(request, imovel_id):
+    imovel = Imovel.objects.get(id=imovel_id)
+    return render(request, 'siteimoveis/imovel.html', {'imovel': imovel})

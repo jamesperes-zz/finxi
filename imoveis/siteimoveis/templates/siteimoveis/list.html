@@ -1,0 +1,40 @@
+{% extends 'siteimoveis/base.html' %}
+
+
+{% block content %}
+<br><br>
+<div class="tags">
+<table class="table table-responsive">
+<thead>
+<tr>
+
+  <th>Anuncio</th>
+  <th>Endereço</th>
+  <th>Bairro</th>
+  <th>Mais informações</th>
+
+</tr>
+</thead>
+</div>
+
+<tbody>
+
+{% for imovel in imoveis %}
+
+        <tr>
+          <td>{{imovel.anuncio}}</td>
+          <td> {{ imovel.endereco }}</td>
+          <td> {{ imovel.bairro }}</td>
+          <td> <a href='/imovel/{{imovel.id}}'>Clique aqui</a></td>
+
+
+        </tr>
+
+{% endfor %}
+    </tbody>
+</div>
+</table>
+
+
+
+{% endblock %}

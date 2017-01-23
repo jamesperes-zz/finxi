@@ -23,22 +23,30 @@
 {%endblock%}
 
 {% block content %}
+<center>
+<br>
+<h1 align="center" > Imóveis por Bairro</h1>
 
 {% for pesquisa in pesquisas %}
 <br>
-<img src="{{ pesquisa.imagem.url }}" width="150" height="150" >
-<br>{{pesquisa.anuncio}}
+<div class="jumbotron">
 
-<br>Endereco: {{pesquisa.endereco }}
-<br>Bairro: {{pesquisa.bairro}}
-<br>Contato: {{pesquisa.vendedor }}
+  <p><img src="{{ pesquisa.imagem.url }}" width="150" height="150" align="left" >
 
+    {{pesquisa.anuncio}}<br/>
+  Endereco: {{pesquisa.endereco }}<br/>
+  Bairro: {{pesquisa.bairro}}<br/>
+  Contato: {{pesquisa.vendedor }}<br/></p>
+  <p>
+  </p>
+</div>
 {%endfor%}
 
 <br>
 
 
-
+<h2 align="center" > Veja os imóveis próximos ao seu bairro</h2>
+<br>
   <div id="map"></div>
   <script>
 
@@ -49,19 +57,19 @@ var map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: {{lat}}, lng: {{lng}}}
 });
 
-{%for pesquisa in pesquisas%}
+{%for mapa in mapas%}
 var marker = new google.maps.Marker({
-  position: {lat: {{pesquisa.latitude}}, lng: {{pesquisa.longitude}}},
+  position: {lat: {{mapa.latitude}}, lng: {{mapa.longitude}}},
   map: map,
-  title: '{{pesquisa.anuncio}}'
+  title: '{{mapa.anuncio}}'
 });
 {%endfor%}
 }
 
   </script>
   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN_pS2HY1GrbvJyLaAb10y7tX92i6zJAI&callback=initMap"></script>
-
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDtrKjdK9fa89PSzloZ7PhXYpJKpmuG2g&callback=initMap"></script>
+</center>
 
 {% endblock %}
 

@@ -20,22 +20,28 @@
 {%endblock%}
 
 {% block content %}
+<br><br>
+<h1 align="center" > Alguns de nossos Imoveís </h1>
+<br>
+    {% for imovel in imoveis3 %}
 
-{% for imovel in imoveis3 %}
+    <div class="jumbotron">
+      <h2>{{imovel.anuncio}}</h2>
+      <p><img src="{{ imovel.imagem.url }}" width="150" height="150" align="left" >
 
-<h3>{{imovel.anuncio}}</h3>
-<img src="{{ imovel.imagem.url }}" width="150" height="150" >
-<br>{{imovel.anuncio}}
-
-<br>Endereco: {{imovel.endereco }}
-<br>Bairro: {{imovel.bairro}}
-<br>Contato: {{imovel.vendedor }}
-
-{%endfor%}
+        {{imovel.anuncio}}<br/>
+      Endereco: {{imovel.endereco }}<br/>
+      Bairro: {{imovel.bairro}}<br/>
+      Contato: {{imovel.vendedor }}<br/>
+      Mais informações :<a href='/imovel/{{imovel.id}}'>Clique aqui</a><br/>
+      </p>
+    </div>
+    {%endfor%}
 
 <br>
-
-
+<h1 align="center" > Encontre um o Imovel em sua Cidade </h1>
+<br>
+<center>
 
   <div id="map"></div>
   <script>
@@ -58,8 +64,8 @@ var marker = new google.maps.Marker({
 
   </script>
   <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN_pS2HY1GrbvJyLaAb10y7tX92i6zJAI&callback=initMap"></script>
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDtrKjdK9fa89PSzloZ7PhXYpJKpmuG2g&callback=initMap"></script>
 
-
-
+<br><br>
+</center>
 {% endblock %}
