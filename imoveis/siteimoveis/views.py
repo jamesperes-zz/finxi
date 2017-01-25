@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.conf import settings
 
 import geocoder
 
@@ -7,9 +8,12 @@ from .forms import ImovelForm, VendedorForm
 from .models import Imovel
 
 
+api_google = settings.GOOGLE_API_KEY
+
+
 def imovel_home(request):
     imoveis_localizados = Imovel.objects.all()
-    imoveis = Imovel.objects.order_by('?')[:3]
+    imoveis = imoveis_localizados.order_by('?')[:3]
     # não esta usando pq django pega o ip do servidor
     ip = get_client_ip(request)
     # colocar a variavel ip aqui
@@ -20,10 +24,12 @@ def imovel_home(request):
 
     lat = str(local.lat)
     lng = str(local.lng)
+    api = api_google
     return render(request,
                   'siteimoveis/home.html', {'imoveis': imoveis_localizados,
                                             'lat': lat, 'lng': lng,
-                                            'imoveis3': imoveis})
+                                            'imoveis3': imoveis,
+                                            'api': api})
 
 
 def imovel_novo(request):
@@ -51,20 +57,22 @@ def vendedor_novo(request):
 def imovel_pesquisa(request):
     mapas = Imovel.objects.all()
     search = request.POST.get('pesquisa')
-    pesquisas = Imovel.objects.filter(bairro=search.lower())
+    pesquisas = mapas.filter(bairro=search.lower())
     ip = get_client_ip(request)
     local = geocoder.ip('177.192.118.248')
-    if local.lat is None or local.lng is None:
+    if not local.lat or not local.lng:
         lat = '-22.9710987'
         lng = '-43.1868393'
 
     lat = str(local.lat)
     lng = str(local.lng)
+    api = api_google
     return render(request, 'siteimoveis/pesquisa.html',
                   {'pesquisas': pesquisas,
                    'lat': lat,
                    'lng': lng,
-                   'mapas': mapas})
+                   'mapas': mapas,
+                   'api': api})
 
 
 def get_client_ip(request):

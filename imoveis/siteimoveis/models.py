@@ -1,6 +1,7 @@
 from django.db import models
 
-from PIL import Image #está sendo usado para ImageField
+# está sendo usado para ImageField
+from PIL import Image
 import geocoder
 
 
