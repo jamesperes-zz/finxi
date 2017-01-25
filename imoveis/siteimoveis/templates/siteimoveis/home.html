@@ -54,11 +54,11 @@ var map = new google.maps.Map(document.getElementById('map'), {
 });
 
 {%for imovel in imoveis%}
-var marker = new google.maps.Marker({
-  position: {lat: {{imovel.latitude}}, lng: {{imovel.longitude}}},
-  map: map,
-  title: '{{imovel.anuncio}}'
-});
+  var marker = new google.maps.Marker({
+    position: {lat: {{imovel.latitude}}, lng: {{imovel.longitude}}},
+    map: map,
+    title: '{{imovel.anuncio}}'
+  });
 {%endfor%}
 }
 
