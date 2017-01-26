@@ -1,0 +1,51 @@
+{% extends 'siteimoveis/base.html' %}
+
+
+
+{% block head%}
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+   <meta charset="utf-8">
+   <style>
+     html, body {
+       height: 100%;
+       margin: 0;
+       padding: 0;
+     }
+     #map {
+       height: 35%;
+       width: 35%;
+     }
+   </style>
+
+
+
+{%endblock%}
+
+{% block content %}
+<center>
+<br>
+<h1 align="center" > Imóveis por busca</h1>
+
+{% for encontrado in encontrados %}
+<br>
+<div class="jumbotron">
+
+  <p><img src="{{ encontrado.imagem.url }}" width="150" height="150" align="left" >
+
+    {{encontrado.anuncio}}<br/>
+  Endereco: {{encontrado.endereco }}<br/>
+  Bairro: {{encontrado.bairro}}<br/>
+  Contato: {{encontrado.vendedor }}<br/>
+  Mais informações :<a href='/imovel/{{imovel.id}}'>Clique aqui</a><br/>
+  </p>
+</div>
+{%endfor%}
+
+
+</center>
+<br><br>
+{% endblock %}
+
+{% block script%}
+{%endblock%}

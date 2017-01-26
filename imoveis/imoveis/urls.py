@@ -17,7 +17,8 @@ from django.conf.urls import url, include
 from django.conf import settings
 from django.contrib import admin
 from siteimoveis.views import (imovel_home, imovel_novo, vendedor_novo,
-                               imovel_pesquisa, imovel_list, imovel)
+                               imovel_pesquisa, imovel_list, imovel,
+                               imovel_proximos)
 from django.conf.urls.static import static
 
 urlpatterns = [
@@ -29,4 +30,5 @@ urlpatterns = [
     url(r'^cadastravendedor/$', vendedor_novo, name='vendedor_novo'),
     url(r'^lista/$', imovel_list, name='imovel_list'),
     url(r'^imovel/(?P<imovel_id>[0-9]+)$', imovel),
+    url(r'^imovelproximo/$', imovel_proximos, name='imovelproximo'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

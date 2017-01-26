@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.conf import settings
+from django.db.models import Q
 
 import geocoder
+from geopy.distance import vincenty
+
 
 from .forms import ImovelForm, VendedorForm
 from .models import Imovel
@@ -57,7 +60,10 @@ def vendedor_novo(request):
 def imovel_pesquisa(request):
     mapas = Imovel.objects.all()
     search = request.POST.get('pesquisa')
-    pesquisas = mapas.filter(bairro=search.lower())
+    pesquisas = mapas.filter(
+        Q(bairro__icontains=search) | Q(endereco__icontains=search)
+    )
+
     ip = get_client_ip(request)
     local = geocoder.ip('177.192.118.248')
     if not local.lat or not local.lng:
@@ -92,3 +98,23 @@ def imovel_list(request):
 def imovel(request, imovel_id):
     imovel = Imovel.objects.get(id=imovel_id)
     return render(request, 'siteimoveis/imovel.html', {'imovel': imovel})
+
+
+def imovel_proximos(request):
+ #   import ipdb; ipdb.set_trace()
+    imoveis = Imovel.objects.all()
+    search = request.POST.get('pesquisa')
+    endereco_pesquisado = geocoder.google(search)
+    lat_pesquisada = str(endereco_pesquisado.lat)
+    lng_pesquisada = str(endereco_pesquisado.lng)
+    ponto = (lat_pesquisada, lng_pesquisada)
+    encontrados = []
+    for imovel in imoveis:
+        if vincenty(ponto, (imovel.latitude,
+                            imovel.longitude)).kilometers <= 1.0:
+            encontrados.append(imovel)
+            print(imovel)
+
+    return render(request, 'siteimoveis/pesquisapro.html',
+                  {'imoveis': imoveis,
+                   'encontrados': encontrados})
