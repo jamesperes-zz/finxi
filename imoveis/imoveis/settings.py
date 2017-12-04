@@ -25,7 +25,7 @@ MEDIA_URL = '/media/'
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = '_#%b&*dg0a6$j_)!h(s2gh+1djhlyo@c2v#+38%rd%tc18oc7('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -132,4 +132,5 @@ STATIC_URL = '/static/'
 
 # google API KEY
 
-GOOGLE_API_KEY = config('GOOGLE_API_KEY')
+GOOGLE_API_KEY = 'AIzaSyBDtrKjdK9fa89PSzloZ7PhXYpJKpmuG2g'
+

@@ -44,27 +44,23 @@
 <center>
 
   <div id="map"></div>
-  <script>
+    <script>
+      function initMap() {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
 
-function initMap() {
-
-var map = new google.maps.Map(document.getElementById('map'), {
-  zoom: 10,
-  center: {lat: {{lat}}, lng: {{lng}}}
-});
-
-{%for imovel in imoveis%}
-  var marker = new google.maps.Marker({
-    position: {lat: {{imovel.latitude}}, lng: {{imovel.longitude}}},
-    map: map,
-    title: '{{imovel.anuncio}}'
-  });
-{%endfor%}
-}
-
-  </script>
-  <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key={{api}}&callback=initMap"></script>
 
 <br><br>
 </center>
